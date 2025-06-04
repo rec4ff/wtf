@@ -1,9 +1,9 @@
 {
   "name": "Mi Argentina",
   "short_name": "Mi Argentina",
-  "start_url": "/miarg/",
-  "scope": "/miarg/",
-  "display": "standalone",
+  "start_url": "/index.html/",
+  "scope": "/index.html/",
+  "display": "fullcreen",
   "background_color": "#3630ba",
   "theme_color": "#3630ba",
   "orientation": "portrait",
