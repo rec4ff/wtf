@@ -1,0 +1,163 @@
+<html lang="es" translate="no">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="/icons/favicon.ico">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=0">
+    <meta name="display" content="standalone">
+    <meta name="theme-color" content="#3730ba">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Mi Argentina">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="description" content="Registrate para obtener tu DNI digital">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <style>
+      @import url(https://fonts.googleapis.com/css2?family=Lobster&display=swap);
+      @import url(https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap);
+    </style>
+    <title>Mi Argentina</title>
+    <script src="https://apis.google.com/_/scs/abc-static/_/js/k=gapi.lb.en.UrDN-rBnMgo.O/m=gapi_iframes/rt=j/sv=1/d=1/ed=1/rs=AHpOoo8Lt5m-Nn72_E0-4M58GbbhD_y7Yw/cb=gapi.loaded_0?le=scs" async=""></script>
+    <link href="index.css" rel="stylesheet">
+    <script src="https://apis.google.com/js/api.js?onload=__iframefcb740449" type="text/javascript" charset="UTF-8" gapi_processed="true"></script>
+    <script src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-M3GVWJJ11H" async=""></script>
+    
+    
+    <!-- Meta tags esenciales para iOS/Android -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Íconos para iOS -->
+    <link rel="apple-touch-icon" href="imgs/logo-192x192.png">
+    <link rel="apple-touch-startup-image" href="imgs/splash.png">
+    
+    <!-- Manifest (obligatorio) -->
+    <link rel="manifest" href="manifest.json">
+    <script src="sw.js"></script>
+    <script defer="defer" src="datos.js"></script>
+
+    <!-- Color de la barra de estado en iOS -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Color de fondo mientras carga (splash screen improvisado) -->
+    <style>
+      @media (prefers-color-scheme: light) {
+        body {
+          background-color: #3630ba !important;
+        }
+      }
+</style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+      <div class="masterContainer">
+        <div style="transform: none; position: initial; top: 0px; min-width: min(100vw, 700px); min-height: 100vh;">
+          <div class="Home">
+            <header class="Home_headerContainer">
+              <div class="Home_headerFirstContainer">
+                <div class="Home_headerOps">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="Home_headerTitle">
+                  <span class="Home_headerTitleMi">mi</span>
+                  <span class="Home_headerTitleArg">Argentina</span>
+                </div>
+                <div class="Home_profilePic">
+                  <img src="imgs/iconos/1.jpeg" alt="miarg_profilePic">
+                </div>
+              </div>
+              <div class="Home_headerWelcoming">
+                <p class="NombreIndex">¡Hola, Clara!</p>
+              </div>
+            </header>
+            <div class="Home_topBannerContainer">
+              <div class="Home_topBannerContent">
+                <div class="Home_topBannerTicket">
+                  <img src="imgs/iconos/2.jpeg" alt="ticket_pic">
+                </div>
+                <div class="Home_topBannerBtnContainer">
+                  <p>No tenés turnos programados.</p>
+                  <button>Sacá turno</button>
+                </div>
+              </div>
+            </div>
+            <div class="Home_credcheck_container">
+              <div>
+                <p>¡Todas tus credenciales están al día!</p>
+                <img src="imgs/iconos/3.jpeg" alt="credcheck icon">
+              </div>
+            </div>
+            <div class="Home_contentContainer">
+              <div class="Home_contentBackground">
+                <p class="Home_contentTitle">¿Qué necesitás hoy?</p>
+                <div class="Home_content">
+                  <a class="Home_contentBtn" href="mis-documentos.html">
+                    <img src="imgs/iconos/4.jpeg" alt="misdocumentos">
+                    <span>Documentos</span>
+                  </a>
+                  <a class="Home_contentBtn" href="mis-documentos.html">
+                    <img src="imgs/iconos/5.jpeg" alt="misvehiculos">
+                    <span>Vehículos</span>
+                  </a>
+                  <a class="Home_contentBtn" href="/admin">
+                    <img src="imgs/iconos/6.jpeg" alt="misalud">
+                    <span>Salud</span>
+                  </a>
+                  <a class="Home_contentBtn" href="/misdocumentos">
+                    <img src="imgs/iconos/7.jpeg" alt="mitrabajo">
+                    <span>Trabajo</span>
+                  </a>
+                  <a class="Home_contentBtn" href="/misdocumentos">
+                    <img src="imgs/iconos/8.jpeg" alt="miscobros">
+                    <span>Cobros</span>
+                  </a>
+                  <div class="Home_mistramitesContainer">
+                    <a class="Home_contentBtn" href="tramites.html">
+                      <img src="imgs/iconos/9.jpeg" alt="mistramites">
+                      <span>Trámites</span>
+                    </a>
+                  </div>
+                  <a class="Home_contentBtn" href="/misdocumentos">
+                    <img src="imgs/iconos/10.jpeg" alt="mistrunos">
+                    <span>Turnos</span>
+                  </a>
+                  <a class="Home_contentBtn" href="/misdocumentos">
+                    <img src="imgs/iconos/11.jpeg" alt="misturnos">
+                    <span>Hijos</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" tabindex="-1" vspace="0" width="100%" aria-hidden="true" id="I0_1746123794489" name="I0_1746123794489" src="https://miargenntina.firebaseapp.com/__/auth/iframe?apiKey=AIzaSyCRHvG8mym2_-GHyEX9L-i6Dpk5Nb9QSMs&amp;appName=%5BDEFAULT%5D&amp;v=9.6.9&amp;eid=p&amp;usegapi=1&amp;jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.UrDN-rBnMgo.O%2Fd%3D1%2Frs%3DAHpOoo8Lt5m-Nn72_E0-4M58GbbhD_y7Yw%2Fm%3D__features__#id=I0_1746123794489&amp;_gfid=I0_1746123794489&amp;parent=https%3A%2F%2Fdumpydumpy.com&amp;pfname=&amp;rpctoken=39092247" style="position: absolute; top: -100px; width: 1px; height: 1px;"></iframe>
+  
+    <script>
+      async function loadPageContent(url) {
+        const response = await fetch(url);
+        const html = await response.text();
+        document.getElementById('app').innerHTML = html;
+      }
+
+            // Registra el Service Worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('SW registrado:', registration.scope);
+            })
+            .catch(err => {
+              console.log('Falló el registro:', err);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>

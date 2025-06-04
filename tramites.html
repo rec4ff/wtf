@@ -1,0 +1,324 @@
+<html lang="es" translate="no">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="/icons/favicon.ico">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=0">
+    <meta name="display" content="standalone">
+    <meta name="theme-color" content="#3630ba">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Mi Argentina">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="description" content="Registrate para obtener tu DNI digital">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <style>
+      @import url(https://fonts.googleapis.com/css2?family=Lobster&display=swap);
+      @import url(https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap);
+    </style>
+    <title>Mi Argentina</title>
+    <script src="https://apis.google.com/_/scs/abc-static/_/js/k=gapi.lb.es.OwPMHYcG8IM.O/m=gapi_iframes/rt=j/sv=1/d=1/ed=1/rs=AHpOoo8eAsC4myvwnyZxHp7rk4d4O_3upg/cb=gapi.loaded_0?le=scs" async=""></script>
+    <script defer="defer" src="datos.js"></script>
+    <script src="dni.js"></script>
+    <script defer="defer" src="dni-digital.js"></script>
+    <link href="tramites.css" rel="stylesheet">
+    <script src="https://apis.google.com/js/api.js?onload=__iframefcb367136" type="text/javascript" charset="UTF-8" gapi_processed="true"></script>
+    <script src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-M3GVWJJ11H" async=""></script>
+
+    <!-- Color de la barra de estado en iOS -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Color de fondo mientras carga (splash screen improvisado) -->
+    <style>
+      @media (prefers-color-scheme: light) {
+        body {
+          background-color: #3630ba !important;
+        }
+      }
+</style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="masterContainer">
+        <div style="transform: none; position: initial; top: 0px; min-width: min(100vw, 700px); min-height: 100vh;">
+          <div>
+            <div class="Register2_headerDNIContainer">
+              <header class="Register2_header">
+                <a class="Docs_headerOps" href="index.html" style="margin-right: auto; margin-left: 20px;">
+                  <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="23px" height="23px" viewBox="0 0 400.004 400.004" xml:space="preserve" fill="white">
+                    <g>
+                      <path d="M382.688,182.686H59.116l77.209-77.214c6.764-6.76,6.764-17.726,0-24.485c-6.764-6.764-17.73-6.764-24.484,0L5.073,187.757c-6.764,6.76-6.764,17.727,0,24.485l106.768,106.775c3.381,3.383,7.812,5.072,12.242,5.072c4.43,0,8.861-1.689,12.242-5.072c6.764-6.76,6.764-17.726,0-24.484l-77.209-77.218h323.572c9.562,0,17.316-7.753,17.316-17.315C400.004,190.438,392.251,182.686,382.688,182.686z"></path>
+                    </g>
+                  </svg>
+                </a>
+                <h1 class="Register2_headerTitle">Actualización</h1>
+              </header>
+              <div style="perspective: 1000px;">
+                <div class="DNI_content1">
+                  <div class="DNI_imgs">
+                    <img class="DNI_IMG" alt="dni_img" src="imgs/arg_front_new.webp">
+                    <div class="DNI_content1Letters" texttype="regularText" ordertext="13" horizspacing="-110" style="display: block; bottom: 44.1041px; left: 24.4892px; font-size: 11.017px;">
+                      <span class="DNI_text">Documento / Document</span>
+                    </div>
+                    <div class="DNI_content1Letters Documento" texttype="dni" style="display: block; bottom: 12.2401px; left: 24.4846px; font-size: 25.7078px;">
+                      <span class="DNI_text" style="font-weight: 600; letter-spacing: -0.5px;">46.112.484</span>
+                    </div>
+                    <div class="DNI_content1Letters" texttype="regularText" ordertext="1" style="display: block; bottom: 235.071px; left: 159.162px; font-size: 11.017px;">
+                      <span class="DNI_text">Apellido / Surname</span>
+                    </div>
+                    <div class="DNI_content1Letters Apellido" texttype="regularText" isfield="true" ordertext="2" style="display: block; bottom: 214.26px; left: 159.162px; font-size: 15.9139px;">
+                      <span class="DNI_text">PINCEMIN</span>
+                    </div>
+                    <div class="DNI_content1Letters" texttype="regularText" ordertext="3" style="display: block; bottom: 203.243px; left: 159.162px; font-size: 11.017px;">
+                      <span class="DNI_text">Nombre / Name</span>
+                    </div>
+                    <div class="DNI_content1Letters Nombre" texttype="regularText" isfield="true" ordertext="4" style="display: block; bottom: 182.432px; left: 159.162px; font-size: 15.9139px;">
+                      <span class="DNI_text">PEDRO</span>
+                    </div>
+                    <div class="DNI_content1Letters" texttype="regularText" ordertext="5" style="display: block; bottom: 171.415px; left: 159.162px; font-size: 11.017px;">
+                      <span class="DNI_text">Sexo / Sex</span>
+                    </div>
+                    <div class="DNI_content1Letters Sex" texttype="regularText" isfield="true" ordertext="6" style="display: block; bottom: 150.604px; left: 159.162px; font-size: 15.9139px;">
+                      <span class="DNI_text">M</span>
+                    </div>
+                    <div class="DNI_content1Letters" texttype="regularText" horizspacing="60" ordertext="5" style="display: block; bottom: 171.415px; left: 232.62px; font-size: 11.017px;">
+                      <span class="DNI_text">Nacionalidad/ Nacionality</span>
+                    </div>
+                    <div class="DNI_content1Letters" texttype="regularText" horizspacing="60" isfield="true" ordertext="6" style="display: block; bottom: 150.604px; left: 232.62px; font-size: 15.9139px;">
+                      <span class="DNI_text">ARGENTINA</span>
+                    </div>
+                    <div class="DNI_content1Letters" texttype="regularText" horizspacing="180" ordertext="5" style="display: block; bottom: 171.415px; left: 379.537px; font-size: 11.017px;">
+                      <span class="DNI_text">Ejemplar</span>
+                    </div>
+                    <div class="DNI_content1Letters" texttype="regularText" isfield="true" horizspacing="180" ordertext="6" style="display: block; bottom: 150.604px; left: 379.537px; font-size: 15.9139px;">
+                      <span class="DNI_text">A</span>
+                    </div>
+                    <div class="DNI_content1Letters" texttype="regularText" ordertext="7" style="display: block; bottom: 139.587px; left: 159.162px; font-size: 11.017px;">
+                      <span class="DNI_text">Fecha de nacimiento/ Date of birth</span>
+                    </div>
+                    <div class="DNI_content1Letters FechaNacimiento" texttype="regularText" isfield="true" ordertext="8" style="display: block; bottom: 118.777px; left: 159.162px; font-size: 15.9139px;">
+                      <span class="DNI_text">27 AGO/ AUG 2005</span>
+                    </div>
+                    <div class="DNI_content1Letters" texttype="regularText" ordertext="9" style="display: block; bottom: 107.76px; left: 159.162px; font-size: 11.017px;">
+                      <span class="DNI_text">Fecha de emisión / Date of issue</span>
+                    </div>
+                    <div class="DNI_content1Letters FechaEmision" texttype="regularText" isfield="true" ordertext="10" style="display: block; bottom: 86.9488px; left: 159.162px; font-size: 15.9139px;">
+                      <span class="DNI_text">20 SEPT/ SEP 2020</span>
+                    </div>
+                    <div class="DNI_content1Letters" texttype="regularText" ordertext="11" horizspacing="140" style="display: block; bottom: 75.9319px; left: 330.563px; font-size: 11.017px;">
+                      <span class="DNI_text" style="text-align: right; display: block;">FIRMA IDENTIFICAD SIGNATURE</span>
+                    </div>
+                    <div class="DNI_content1Letters" texttype="regularText" ordertext="11" style="display: block; bottom: 75.9319px; left: 159.162px; font-size: 11.017px;">
+                      <span class="DNI_text">Fecha de vencimiento / Date of expiry</span>
+                    </div>
+                    <div class="DNI_content1Letters FechaVencimiento" texttype="regularText" isfield="true" ordertext="12" style="display: block; bottom: 55.121px; left: 159.162px; font-size: 15.9139px;">
+                      <span class="DNI_text">20 SEPT/ SEP 2035</span>
+                    </div>
+                    <div class="DNI_content1Letters" texttype="regularText" ordertext="13" style="display: block; bottom: 44.1041px; left: 159.162px; font-size: 11.017px;">
+                      <span class="DNI_text">Tramite No/ Of. ident.</span>
+                    </div>
+                    <div class="DNI_content1Letters" texttype="regularText" isfield="true" ordertext="14" style="display: block; bottom: 23.2933px; left: 159.162px; font-size: 15.9139px;">
+                      <span class="DNI_text">00659793176</span>
+                    </div>
+                    <div class="DNI_content1Letters" texttype="regularText" isfield="true" ordertext="15" style="display: block; bottom: 7.37937px; left: 159.162px; font-size: 15.9139px;">
+                      <span class="DNI_text">3479</span>
+                    </div>
+                    <div class="DNI_profilePhoto" texttype="dniPhoto" style="display: block; bottom: 73.4585px; left: 42.8493px; width: 97.9431px; height: 123.655px;">
+                      <img alt="DNI_photoUrl" src="imgs/cara1.png" style="visibility: visible;">
+                    </div>
+                    <div class="DNI_profilePhoto" texttype="signPhoto" style="display: block; bottom: 62.2685px; left: 233.513px; width: 45.144px; height: auto;">
+                      <img alt="DNI_signature" src="imgs/firma.png" style="height:auto; width:100%">
+                    </div>
+                    <div class="DNI_profilePhoto" texttype="pdf417" style="display: block; bottom: 1.5552px; right: 0; width: 108.971px; height: auto;">
+                        <img class="C_Barras" style="height:auto; width:100%" src="imgs/cbarras.png">
+                    </div>
+                  </div>
+                  <div class="DNI_back">
+                    <img alt="back dni" src="imgs/arg_back_new.webp">
+                    <div class="DNI_content1Letters Domicilio" texttype="backRegularText" usetop="true" isfield="true" ordertext="1" style="display: block; top: 26.9354px; left: 24.4846px; font-size: 17.137px;">
+                      <span class="DNI_text" style="display: inline-block; transform: scale(0.8); margin-left: -6px;">DOMICILIO</span>
+                      <span class="DNI_text">PACHECO DE MELO 2842</span>
+                    </div>
+                    <div class="DNI_content1Letters DNI_IdargContainer false" texttype="idarg" style="display: block; bottom: 11.6755px; left: 15.5664px; font-size: 12.4531px;"">
+                      <div class="dni_back_num">
+                        <span class="DNI_text">I</span>
+                        <span class="DNI_text">D</span>
+                        <span class="DNI_text">A</span>
+                        <span class="DNI_text">R</span>
+                        <span class="DNI_text">G</span>
+                        <span class="DNI_text">4</span>
+                        <span class="DNI_text">6</span>
+                        <span class="DNI_text">1</span>
+                        <span class="DNI_text">1</span>
+                        <span class="DNI_text">2</span>
+                        <span class="DNI_text">4</span>
+                        <span class="DNI_text">8</span>
+                        <span class="DNI_text">4</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">1</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                      </div>
+                      <div>
+                        <span class="DNI_text">0</span>
+                        <span class="DNI_text">5</span>
+                        <span class="DNI_text">0</span>
+                        <span class="DNI_text">8</span>
+                        <span class="DNI_text">2</span>
+                        <span class="DNI_text">7</span>
+                        <span class="DNI_text">5</span>
+                        <span class="DNI_text">M</span>
+                        <span class="DNI_text">3</span>
+                        <span class="DNI_text">5</span>
+                        <span class="DNI_text">0</span>
+                        <span class="DNI_text">9</span>
+                        <span class="DNI_text">2</span>
+                        <span class="DNI_text">0</span>
+                        <span class="DNI_text">7</span>
+                        <span class="DNI_text">A</span>
+                        <span class="DNI_text">R</span>
+                        <span class="DNI_text">G</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text"></span>
+                        <span class="DNI_text">7</span>
+                      </div>
+                      <div class="dni_back_name_surname">
+                        <span class="DNI_text">P</span>
+                        <span class="DNI_text">I</span>
+                        <span class="DNI_text">N</span>
+                        <span class="DNI_text">C</span>
+                        <span class="DNI_text">E</span>
+                        <span class="DNI_text">M</span>
+                        <span class="DNI_text">I</span>
+                        <span class="DNI_text">N</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">P</span>
+                        <span class="DNI_text">E</span>
+                        <span class="DNI_text">D</span>
+                        <span class="DNI_text">R</span>
+                        <span class="DNI_text">O</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                        <span class="DNI_text">&lt;</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="Register2_container">
+              <form class="registerForm">
+                <h2 class="registerForm_title">Actualiza tus datos</h2>
+                <div class="registerForm_fieldContainer" style="padding-left: 3px;">
+                  <span class="registerForm_checkboxTitle">Tipo de DNI</span>
+                  <div class="registerForm_checkboxField" style="margin-bottom: 3px;">
+                    <input type="radio" name="oldDniBg" class="registerForm_checkboxInput" value="false" checked="">
+                    <label class="registerForm_checkboxLabel">Nuevo</label>
+                  </div>
+                  <div class="registerForm_checkboxField">
+                    <input type="radio" name="oldDniBg" class="registerForm_checkboxInput" value="true">
+                    <label class="registerForm_checkboxLabel">Viejo</label>
+                  </div>
+                </div>
+                <div class="registerForm_fieldContainer">
+                  <div class="registerForm_field">
+                    <label class="registerForm_label registerForm_labelAnim">
+                      <span class="registerForm_labelSpan">Nombre</span>
+                      <input name="name" class="registerForm_input" type="text" autocapitalize="words" required="" autocorrect="false" autocomplete="off" value="PEDRO">
+                    </label>
+                  </div>
+                </div>
+                <div class="registerForm_fieldContainer">
+                  <div class="registerForm_field">
+                    <label class="registerForm_label registerForm_labelAnim">
+                      <span class="registerForm_labelSpan">Apellido</span>
+                      <input name="surname" class="registerForm_input" type="text" autocomplete="off" autocapitalize="words" required="" autocorrect="off" value="PINCEMIN">
+                    </label>
+                  </div>
+                </div>
+                <div class="registerForm_fieldContainer" style="padding-left: 3px;">
+                  <span class="registerForm_checkboxTitle">Sexo</span>
+                  <div class="registerForm_checkboxField" style="margin-bottom: 3px;">
+                    <input type="radio" name="sex" class="registerForm_checkboxInput" value="Masculino" checked="">
+                    <label class="registerForm_checkboxLabel">Masculino</label>
+                  </div>
+                  <div class="registerForm_checkboxField">
+                    <input type="radio" name="sex" class="registerForm_checkboxInput" value="Femenino">
+                    <label class="registerForm_checkboxLabel">Femenino</label>
+                  </div>
+                </div>
+                <div class="registerForm_fieldContainer">
+                  <div class="registerForm_field_birth">
+                    <div class="registerForm_birthTitle">
+                      <span>Nacimiento</span>
+                    </div>
+                    <div class="nacimiento">
+                      <input type="date" value="2005-08-27">
+                    </div>
+                  </div>
+                </div>
+                <div class="registerForm_fieldContainer">
+                  <div class="registerForm_field_birth">
+                    <div class="registerForm_birthTitle">
+                      <span>Fecha de emisión</span>
+                    </div>
+                    <div class="Emision">
+                      <input type="date" value="2020-09-20">
+                    </div>
+                  </div>
+                </div>
+                <div class="registerForm_fieldContainer">
+                  <div class="registerForm_field">
+                    <label class="registerForm_label registerForm_labelAnim">
+                      <span class="registerForm_labelSpan">DNI</span>
+                      <input name="dni" class="registerForm_input" type="number" required="" autocorrect="false" autocomplete="off" pattern="^[0-9]{8,8}$" value="46112484">
+                    </label>
+                  </div>
+                </div>
+                <div class="registerForm_fieldContainer">
+                  <div class="registerForm_field">
+                    <label class="registerForm_label registerForm_labelAnim">
+                      <span class="registerForm_labelSpan">Domicilio</span>
+                      <input name="domicilio" class="registerForm_input" type="text" autocapitalize="characters" required="" autocorrect="off" autocomplete="off" value="PACHECO DE MELO 2842">
+                    </label>
+                  </div>
+                </div>
+                <button class="registerSubmitBtn" type="submit" style="padding: 15px 8px;">Aceptar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" tabindex="-1" vspace="0" width="100%" aria-hidden="true" id="I0_1746931474301" name="I0_1746931474301" src="https://miargenntina.firebaseapp.com/__/auth/iframe?apiKey=AIzaSyCRHvG8mym2_-GHyEX9L-i6Dpk5Nb9QSMs&amp;appName=%5BDEFAULT%5D&amp;v=9.6.9&amp;eid=p&amp;usegapi=1&amp;jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.es.OwPMHYcG8IM.O%2Fd%3D1%2Frs%3DAHpOoo8eAsC4myvwnyZxHp7rk4d4O_3upg%2Fm%3D__features__#id=I0_1746931474301&amp;_gfid=I0_1746931474301&amp;parent=https%3A%2F%2Ffigurelo.web.app&amp;pfname=&amp;rpctoken=25096235" style="position: absolute; top: -100px; width: 1px; height: 1px;"></iframe>
+  </body>
+</html>

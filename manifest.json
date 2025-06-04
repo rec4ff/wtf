@@ -1,0 +1,23 @@
+{
+  "name": "Mi Argentina",
+  "short_name": "Mi Argentina",
+  "start_url": "/miarg/",
+  "scope": "/miarg/",
+  "display": "standalone",
+  "background_color": "#3630ba",
+  "theme_color": "#3630ba",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "imgs/logo-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "imgs/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
