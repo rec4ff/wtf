@@ -35,7 +35,7 @@
           background-color: #3630ba !important;
         }
       }
-</style>
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -54,9 +54,9 @@
               <span class="PIN_headerTitle">Dni Digital</span>
             </header>
             <div class="DNI_content" style="align-items: center;">
-              <img src="imgs/cara1.png" alt="DNI_photo" class="Detail_photo">
+              <div id="resumenFotoDni"></div>
               <div style="width: 70%; margin-top: 17px;">
-                <img src="imgs/cbarras.png" style="width: 100%;" width="474">
+                <div id="resumenBarcodeDni"></div>
               </div>
               <table class="Detail_table">
                 <tr>
@@ -101,9 +101,7 @@
                 </tr>
                 <tr>
                   <th>Firma</th>
-                  <td>
-                    <img src="imgs/firma.png" alt="DNI_signUrl">
-                  </td>
+                  <td><div id="resumenFirmaDni"></div></td>
                 </tr>
               </table>
             </div>
@@ -112,5 +110,45 @@
       </div>
     </div>
     <iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" tabindex="-1" vspace="0" width="100%" aria-hidden="true" id="I0_1746921699915" name="I0_1746921699915" src="https://miargenntina.firebaseapp.com/__/auth/iframe?apiKey=AIzaSyCRHvG8mym2_-GHyEX9L-i6Dpk5Nb9QSMs&amp;appName=%5BDEFAULT%5D&amp;v=9.6.9&amp;eid=p&amp;usegapi=1&amp;jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.es.OwPMHYcG8IM.O%2Fd%3D1%2Frs%3DAHpOoo8eAsC4myvwnyZxHp7rk4d4O_3upg%2Fm%3D__features__#id=I0_1746921699915&amp;_gfid=I0_1746921699915&amp;parent=https%3A%2F%2Ffigurelo.web.app&amp;pfname=&amp;rpctoken=39939652" style="position: absolute; top: -100px; width: 1px; height: 1px;"></iframe>
+    <div id="resumenFotoDni"></div>
+    <div id="resumenFirmaDni"></div>
+    <div id="resumenBarcodeDni"></div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Foto
+        const foto = JSON.parse(localStorage.getItem('dniFormData'))?.dniPhoto;
+        if (foto) {
+          const img = document.createElement('img');
+          img.src = foto;
+          img.alt = 'Foto DNI';
+          img.style.width = '100px';
+          img.style.height = '120px';
+          img.style.objectFit = 'cover';
+          document.getElementById('resumenFotoDni').appendChild(img);
+        }
+
+        // Firma
+        const firma = localStorage.getItem('dniSignature');
+        if (firma) {
+          const img = document.createElement('img');
+          img.src = firma;
+          img.alt = 'Firma DNI';
+          img.style.width = '100px';
+          img.style.height = 'auto';
+          document.getElementById('resumenFirmaDni').appendChild(img);
+        }
+
+        // Barcode
+        const barcode = localStorage.getItem('dniBarcode');
+        if (barcode) {
+          const img = document.createElement('img');
+          img.src = barcode;
+          img.alt = 'Barcode DNI';
+          img.style.width = '150px';
+          img.style.height = 'auto';
+          document.getElementById('resumenBarcodeDni').appendChild(img);
+        }
+      });
+    </script>
   </body>
 </html>
