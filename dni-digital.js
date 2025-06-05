@@ -226,18 +226,57 @@ function loadFormData() {
     }
 }
 
-// Evento de envío del formulario
-document.querySelector('.registerForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    saveSignature();
-    saveFormData();
-    generatePDF417();
-    
-    // Mostrar mensaje de éxito
-    alert('Datos guardados correctamente');
-});
+// Función para renderizar la foto, firma y barcode en el DNI digital
+function renderDniVisualElements() {
+    // FOTO
+    const photoContainer = document.getElementById('dniPhotoContainer');
+    if (photoContainer) {
+        photoContainer.innerHTML = '';
+        const savedData = localStorage.getItem('dniFormData');
+        if (savedData) {
+            const data = JSON.parse(savedData);
+            if (data.dniPhoto) {
+                const img = document.createElement('img');
+                img.src = data.dniPhoto;
+                img.alt = 'DNI_photoUrl';
+                img.style.width = '100%';
+                img.style.height = '100%';
+                img.style.objectFit = 'cover';
+                photoContainer.appendChild(img);
+            }
+        }
+    }
+    // FIRMA
+    const signContainer = document.getElementById('dniSignContainer');
+    if (signContainer) {
+        signContainer.innerHTML = '';
+        const savedSignature = localStorage.getItem('dniSignature');
+        if (savedSignature) {
+            const img = document.createElement('img');
+            img.src = savedSignature;
+            img.alt = 'DNI_signature';
+            img.style.width = '100%';
+            img.style.height = 'auto';
+            signContainer.appendChild(img);
+        }
+    }
+    // BARCODE
+    const barcodeContainer = document.getElementById('dniBarcodeContainer');
+    if (barcodeContainer) {
+        barcodeContainer.innerHTML = '';
+        const barcodeData = localStorage.getItem('dniBarcode');
+        if (barcodeData) {
+            const img = document.createElement('img');
+            img.src = barcodeData;
+            img.alt = 'DNI_barcode';
+            img.style.width = '100%';
+            img.style.height = 'auto';
+            barcodeContainer.appendChild(img);
+        }
+    }
+}
 
-// Función para generar el código PDF417
+// Modificar la función de generación de PDF417 para guardar la imagen en localStorage y renderizar
 function generatePDF417() {
     const formData = {
         dni: document.querySelector('input[name="dni"]').value,
@@ -254,32 +293,42 @@ function generatePDF417() {
     const pdf417Data = `${formData.dni}|${formData.tramite}|${formData.apellido}|${formData.nombre}|${formData.sexo}|${formData.fechaNacimiento}|${formData.fechaEmision}|${formData.domicilio}`;
 
     // Generar el código PDF417
-    const barcodeImg = document.querySelector('.C_Barras');
-    if (barcodeImg) {
-        try {
-            const canvas = document.createElement('canvas');
-            const options = {
-                width: 300,
-                height: 100,
-                backgroundColor: '#ffffff',
-                foregroundColor: '#000000'
-            };
-            
-            PDF417.draw(pdf417Data, canvas, options);
-            
-            // Convertir el canvas a imagen
-            const dataUrl = canvas.toDataURL('image/png');
-            barcodeImg.src = dataUrl;
-        } catch (error) {
-            console.error('Error al generar el código PDF417:', error);
-        }
+    try {
+        const canvas = document.createElement('canvas');
+        const options = {
+            width: 300,
+            height: 100,
+            backgroundColor: '#ffffff',
+            foregroundColor: '#000000'
+        };
+        PDF417.draw(pdf417Data, canvas, options);
+        // Convertir el canvas a imagen
+        const dataUrl = canvas.toDataURL('image/png');
+        // Guardar en localStorage
+        localStorage.setItem('dniBarcode', dataUrl);
+        // Renderizar
+        renderDniVisualElements();
+    } catch (error) {
+        console.error('Error al generar el código PDF417:', error);
     }
 }
+
+// Modificar los eventos para renderizar después de guardar/cargar
+// Evento de envío del formulario
+document.querySelector('.registerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    saveSignature();
+    saveFormData();
+    generatePDF417();
+    renderDniVisualElements();
+    alert('Datos guardados correctamente');
+});
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', function() {
     loadFormData();
     loadSignature();
+    renderDniVisualElements();
     
     // Configurar el canvas de firma
     canvas = document.getElementById('signatureCanvas');
