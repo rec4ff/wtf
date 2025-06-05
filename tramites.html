@@ -24,6 +24,7 @@
     <link href="tramites.css" rel="stylesheet">
     <script src="https://apis.google.com/js/api.js?onload=__iframefcb367136" type="text/javascript" charset="UTF-8" gapi_processed="true"></script>
     <script src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-M3GVWJJ11H" async=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdf417@1.0.0/dist/pdf417.min.js"></script>
 
     <!-- Color de la barra de estado en iOS -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -122,15 +123,6 @@
                     </div>
                     <div class="DNI_content1Letters" texttype="regularText" isfield="true" ordertext="15" style="display: block; bottom: 7.37937px; left: 159.162px; font-size: 15.9139px;">
                       <span class="DNI_text">3479</span>
-                    </div>
-                    <div class="DNI_profilePhoto" texttype="dniPhoto" style="display: block; bottom: 73.4585px; left: 42.8493px; width: 97.9431px; height: 123.655px;">
-                      <img alt="DNI_photoUrl" src="imgs/cara1.png" style="visibility: visible;">
-                    </div>
-                    <div class="DNI_profilePhoto" texttype="signPhoto" style="display: block; bottom: 62.2685px; left: 233.513px; width: 45.144px; height: auto;">
-                      <img alt="DNI_signature" src="imgs/firma.png" style="height:auto; width:100%">
-                    </div>
-                    <div class="DNI_profilePhoto" texttype="pdf417" style="display: block; bottom: 1.5552px; right: 0; width: 108.971px; height: auto;">
-                        <img class="C_Barras" style="height:auto; width:100%" src="imgs/cbarras.png">
                     </div>
                   </div>
                   <div class="DNI_back">
@@ -307,8 +299,40 @@
                 <div class="registerForm_fieldContainer">
                   <div class="registerForm_field">
                     <label class="registerForm_label registerForm_labelAnim">
+                      <span class="registerForm_labelSpan">Número de Trámite</span>
+                      <input name="tramite" class="registerForm_input" type="text" required="" autocorrect="false" autocomplete="off" pattern="^[0-9]{11,11}$" value="00659793176">
+                    </label>
+                  </div>
+                </div>
+                <div class="registerForm_fieldContainer">
+                  <div class="registerForm_field">
+                    <label class="registerForm_label registerForm_labelAnim">
                       <span class="registerForm_labelSpan">Domicilio</span>
                       <input name="domicilio" class="registerForm_input" type="text" autocapitalize="characters" required="" autocorrect="off" autocomplete="off" value="PACHECO DE MELO 2842">
+                    </label>
+                  </div>
+                </div>
+                <div class="registerForm_fieldContainer" data-type="photo">
+                  <div class="registerForm_field">
+                    <label class="registerForm_label registerForm_labelAnim">
+                      <span class="registerForm_labelSpan">Foto del DNI</span>
+                      <input type="file" name="dniPhoto" class="registerForm_input" accept="image/*" required="">
+                      <div class="registerForm_previewContainer">
+                        <div class="registerForm_previewOverlay">Vista previa de la foto</div>
+                        <img id="dniPhotoPreview" src="" alt="Vista previa" style="display: none;">
+                      </div>
+                    </label>
+                  </div>
+                </div>
+                <div class="registerForm_fieldContainer">
+                  <div class="registerForm_field">
+                    <label class="registerForm_label registerForm_labelAnim">
+                      <span class="registerForm_labelSpan">Firma</span>
+                      <div class="registerForm_signContainer">
+                        <span>Dibuje su firma en el recuadro</span>
+                        <canvas id="signatureCanvas" width="300" height="150"></canvas>
+                        <button type="button" class="registerForm_btn" onclick="clearSignature()">Limpiar Firma</button>
+                      </div>
                     </label>
                   </div>
                 </div>
