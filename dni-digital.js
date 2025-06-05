@@ -17,54 +17,46 @@ ctx.lineWidth = 2;
 ctx.lineCap = 'round';
 ctx.lineJoin = 'round';
 
-content.addEventListener('touchstart', (e) => {
-  startX = e.touches[0].clientX;
-  isDragging = true;
-});
+if (content) {
+  content.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+  });
 
-content.addEventListener('touchmove', (e) => {
-  if (!isDragging) return;
+  content.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    currentX = e.touches[0].clientX;
+    const diffX = currentX - startX;
+    const progress = Math.abs(diffX) / content.offsetWidth;
+    content.style.transition = 'none';
+    if (!isFlipped && diffX < 0) {
+      // Frente → Dorso (deslizar izquierda)
+      const angle = Math.min(180, Math.abs(diffX) / content.offsetWidth * 180);
+      content.style.transform = `rotateY(-${angle}deg)`;
+    } else if (isFlipped && diffX > 0) {
+      // Dorso → Frente (deslizar derecha)
+      const angle = Math.min(180, diffX / content.offsetWidth * 180);
+      content.style.transform = `rotateY(-${180 - angle}deg)`;
+    }
+  });
 
-  currentX = e.touches[0].clientX;
-  const diffX = currentX - startX;
-  const progress = Math.abs(diffX) / content.offsetWidth;
-
-  content.style.transition = 'none';
-
-  if (!isFlipped && diffX < 0) {
-    // Frente → Dorso (deslizar izquierda)
-    const angle = Math.min(180, Math.abs(diffX) / content.offsetWidth * 180);
-    content.style.transform = `rotateY(-${angle}deg)`;
-  } else if (isFlipped && diffX > 0) {
-    // Dorso → Frente (deslizar derecha)
-    const angle = Math.min(180, diffX / content.offsetWidth * 180);
-    content.style.transform = `rotateY(-${180 - angle}deg)`;
-  }
-});
-
-content.addEventListener('touchend', () => {
-  if (!isDragging) return;
-
-  const diffX = currentX - startX;
-  const progress = Math.abs(diffX) / content.offsetWidth;
-
-  content.style.transition = 'transform 0.5s ease';
-
-  if (!isFlipped && diffX < 0 && progress > 0.2) {
-    // Completar frente → dorso
-    isFlipped = true;
-    content.style.transform = 'rotateY(-180deg)';
-  } else if (isFlipped && diffX > 0 && progress > 0.2) {
-    // Completar dorso → frente
-    isFlipped = false;
-    content.style.transform = 'rotateY(0deg)';
-  } else {
-    // Cancelar gesto, volver al estado original
-    content.style.transform = isFlipped ? 'rotateY(-180deg)' : 'rotateY(0deg)';
-  }
-
-  isDragging = false;
-});
+  content.addEventListener('touchend', () => {
+    if (!isDragging) return;
+    const diffX = currentX - startX;
+    const progress = Math.abs(diffX) / content.offsetWidth;
+    content.style.transition = 'transform 0.5s ease';
+    if (!isFlipped && diffX < 0 && progress > 0.2) {
+      isFlipped = true;
+      content.style.transform = 'rotateY(-180deg)';
+    } else if (isFlipped && diffX > 0 && progress > 0.2) {
+      isFlipped = false;
+      content.style.transform = 'rotateY(0deg)';
+    } else {
+      content.style.transform = isFlipped ? 'rotateY(-180deg)' : 'rotateY(0deg)';
+    }
+    isDragging = false;
+  });
+}
 
 // Eventos del canvas de firma
 canvas.addEventListener('mousedown', startDrawing);
@@ -242,6 +234,15 @@ function renderDniVisualElements() {
                 img.style.width = '100%';
                 img.style.height = '100%';
                 img.style.objectFit = 'cover';
+                img.style.position = 'absolute';
+                img.style.top = '0';
+                img.style.left = '0';
+                photoContainer.style.position = 'absolute';
+                photoContainer.style.display = 'block';
+                photoContainer.style.bottom = '73.4585px';
+                photoContainer.style.left = '42.8493px';
+                photoContainer.style.width = '97.9431px';
+                photoContainer.style.height = '123.655px';
                 photoContainer.appendChild(img);
             }
         }
@@ -257,6 +258,12 @@ function renderDniVisualElements() {
             img.alt = 'DNI_signature';
             img.style.width = '100%';
             img.style.height = 'auto';
+            signContainer.style.position = 'absolute';
+            signContainer.style.display = 'block';
+            signContainer.style.bottom = '62.2685px';
+            signContainer.style.left = '233.513px';
+            signContainer.style.width = '45.144px';
+            signContainer.style.height = 'auto';
             signContainer.appendChild(img);
         }
     }
@@ -271,6 +278,12 @@ function renderDniVisualElements() {
             img.alt = 'DNI_barcode';
             img.style.width = '100%';
             img.style.height = 'auto';
+            barcodeContainer.style.position = 'absolute';
+            barcodeContainer.style.display = 'block';
+            barcodeContainer.style.bottom = '1.5552px';
+            barcodeContainer.style.right = '0';
+            barcodeContainer.style.width = '108.971px';
+            barcodeContainer.style.height = 'auto';
             barcodeContainer.appendChild(img);
         }
     }
@@ -353,11 +366,34 @@ document.addEventListener('DOMContentLoaded', function() {
     // Escuchar cambios en los campos del formulario para actualizar el PDF417
     const formInputs = document.querySelectorAll('.registerForm_input');
     formInputs.forEach(input => {
-        input.addEventListener('change', generatePDF417);
+        input.addEventListener('change', function() {
+            saveFormData();
+            generatePDF417();
+            renderDniVisualElements();
+        });
     });
 
     // Escuchar la carga de la foto del DNI
     if (dniPhotoInput) {
-        dniPhotoInput.addEventListener('change', handleDNIPhotoUpload);
+        dniPhotoInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const dniPhotoPreview = document.getElementById('dniPhotoPreview');
+                    if (dniPhotoPreview) {
+                        dniPhotoPreview.src = e.target.result;
+                        dniPhotoPreview.style.display = 'block';
+                    }
+                    // Guardar en localStorage
+                    const savedData = localStorage.getItem('dniFormData');
+                    let data = savedData ? JSON.parse(savedData) : {};
+                    data.dniPhoto = e.target.result;
+                    localStorage.setItem('dniFormData', JSON.stringify(data));
+                    renderDniVisualElements();
+                };
+                reader.readAsDataURL(file);
+            }
+        });
     }
 });
